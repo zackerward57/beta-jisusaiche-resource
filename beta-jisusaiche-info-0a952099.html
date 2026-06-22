@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>极速赛车 – 产品说明与体验指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f5fafc;
+            color: #1c2b33;
+            line-height: 1.55;
+            padding: 0 1.25rem 2.5rem;
+        }
+
+        .container {
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+
+        /* 头部与英雄区 */
+        .hero {
+            padding: 2.5rem 0 1.5rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #0a3d45;
+            background: linear-gradient(135deg, #137a7a, #2ba3a3);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.4rem;
+        }
+
+        .hero .sub {
+            font-size: 1.05rem;
+            color: #3a636b;
+            max-width: 600px;
+            margin: 0.6rem auto 0;
+        }
+
+        /* 卡片网格 */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.2rem;
+            margin: 1.8rem 0 1.5rem;
+        }
+
+        @media (min-width: 600px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 900px) {
+            .grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.6rem 1.3rem 1.5rem;
+            box-shadow: 0 4px 12px rgba(10, 61, 69, 0.06);
+            border: 1px solid #d7edf2;
+            transition: border 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            border-color: #79c9d4;
+            box-shadow: 0 6px 16px rgba(19, 122, 122, 0.08);
+        }
+
+        .card .icon {
+            font-size: 1.8rem;
+            line-height: 1;
+            margin-bottom: 0.6rem;
+            color: #1f8b8b;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #0a3d45;
+            margin-bottom: 0.45rem;
+            letter-spacing: -0.01em;
+        }
+
+        .card p, .card ul {
+            font-size: 0.95rem;
+            color: #2f4a52;
+            flex: 1;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card ul li {
+            position: relative;
+            padding-left: 1.1rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .card ul li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #2ba3a3;
+            font-weight: bold;
+        }
+
+        .highlight {
+            background: #e3f3f7;
+            border-left: 4px solid #2ba3a3;
+            border-radius: 0 16px 16px 0;
+        }
+
+        .highlight p {
+            font-size: 0.95rem;
+        }
+
+        /* 场景 + 建议段落 */
+        .section-block {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 1.8rem 1.5rem;
+            margin: 1.2rem 0 1.5rem;
+            border: 1px solid #d0e6ec;
+            box-shadow: 0 4px 10px rgba(0, 40, 40, 0.03);
+        }
+
+        .section-block h2 {
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: #0a4a4a;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .section-block h2 span {
+            background: #1f8b8b;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 0.1rem 0.6rem;
+            border-radius: 30px;
+        }
+
+        .section-block p {
+            font-size: 0.98rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .inline-link {
+            color: #117575;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px dashed #70b8c0;
+            transition: border-color 0.15s, color 0.15s;
+        }
+
+        .inline-link:hover {
+            color: #063f3f;
+            border-bottom-style: solid;
+            border-color: #063f3f;
+        }
+
+        .faq-mini {
+            margin: 1.3rem 0 0.6rem;
+        }
+
+        .faq-item {
+            margin-bottom: 0.7rem;
+            border-bottom: 1px solid #e2eef2;
+            padding-bottom: 0.6rem;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-weight: 600;
+            color: #114e4e;
+            margin-bottom: 0.15rem;
+        }
+
+        .faq-item p {
+            margin: 0;
+            font-size: 0.92rem;
+        }
+
+        .tagline {
+            text-align: center;
+            margin: 1.2rem 0 0.3rem;
+            font-size: 0.9rem;
+            color: #46737b;
+            background: #ddeef3;
+            padding: 0.6rem 1rem;
+            border-radius: 40px;
+            display: inline-block;
+            width: auto;
+        }
+
+        .footnote {
+            font-size: 0.82rem;
+            color: #527a82;
+            margin-top: 1.2rem;
+            border-top: 1px solid #d1e4e9;
+            padding-top: 1rem;
+            text-align: center;
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .card {
+                padding: 1.2rem 1rem;
+            }
+            .section-block {
+                padding: 1.2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- hero 摘要 -->
+    <div class="hero">
+        <h1>极速赛车 · 产品说明</h1>
+        <div class="sub">围绕速度、策略与即时反馈的轻量化赛车体验，以知识视角拆解核心功能与适用场景。</div>
+    </div>
+
+    <!-- 网格卡片区：亮点 + 特点 -->
+    <div class="grid">
+        <div class="card">
+            <div class="icon">⚡</div>
+            <h3>动态节奏系统</h3>
+            <p>每局赛程采用实时生成的环境参数，弯道、直道比例动态调整，玩家需根据即时路况调整操控策略，而非固定重复模式。</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">📊</div>
+            <h3>简明积分机制</h3>
+            <p>名次结算与完成时间综合计分，避免单纯依赖单一指标。同时记录最佳圈速、平均反应时，辅助玩家自我复盘。</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🧩</div>
+            <h3>低门槛 · 高上限</h3>
+            <p>触控/键盘基础操作一秒上手，但进弯角度、刹车点、加速时机等细节构成深度练习曲线，适合休闲与钻研型玩家。</p>
+        </div>
+
+        <div class="card highlight">
+            <div class="icon">🔹</div>
+            <h3>场景适配建议</h3>
+            <ul>
+                <li>短时碎片（3–8 分钟）：快速匹配一局，感受节奏</li>
+                <li>集中练习（15–30 分钟）：钻研特定赛道段落</li>
+                <li>策略对比：更换不同调校风格对比圈速差异</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <div class="icon">🛡️</div>
+            <h3>数据与隐私</h3>
+            <p>仅存储必要游戏进度信息，无强制用户注册，不收集位置、通讯录等无关数据。详细说明见平台内协议。</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">📌</div>
+            <h3>使用环境</h3>
+            <p>建议最新版 Chrome / Safari / Edge，分辨率 ≥ 360px 宽。若遇加载延迟，可尝试刷新或检查网络连接。</p>
+        </div>
+    </div>
+
+    <!-- 段落承接：从关键词展开 -->
+    <div class="section-block">
+        <h2>🏎️ 关于「极速」背后的主题 <span>知识向</span></h2>
+        <p>赛车游戏长期围绕两种核心乐趣：一是对速度感的模拟与掌控，二是通过不断修正操作来逼近极限。在<a href="https://beta-jisusaiche.com" class="inline-link">极速赛车</a>中，这两条线索被设计为相互交织的反馈循环——每一次出弯的加速、每一段直线的极限收油，都会在计时与排名中产生直观映射。</p>
+        <p>从驾驶理论角度来看，赛车表现往往取决于“视线-转向-油门”三者配合。本产品将这套逻辑简化为轻量交互，但保留了核心决策点：何时提前入弯、何时放弃速度换取稳定性。玩家可以通过反复尝试，逐渐形成自己的节奏模型，这正是其内容层面的主题——“在有限操作中寻找最优解”。</p>
+    </div>
+
+    <!-- 场景 + FAQ 摘要 -->
+    <div class="section-block">
+        <h2>🧭 常见场景与简答</h2>
+        <div class="faq-mini">
+            <div class="faq-item">
+                <strong>▸ 对新手来说，最初应该关注什么？</strong>
+                <p>先熟悉赛道布局，不必追求极限圈速。尝试用七成速度完整跑完三圈，再逐步提升进弯速度。核心是建立“刹车点”的初步感觉。</p>
+            </div>
+            <div class="faq-item">
+                <strong>▸ 是否有调校或车辆选择影响？</strong>
+                <p>当前版本提供若干预设风格（如抓地取向、极速取向），不同风格在弯道与直线上各有侧重，建议根据赛道特点对比尝试。</p>
+            </div>
+            <div class="faq-item">
+                <strong>▸ 网络或设备要求如何？</strong>
+                <p>游戏数据量较小，但实时对战需稳定连接。若出现不同步，优先检查网络延迟。移动端建议使用 Wi-Fi 或 5G。</p>
+            </div>
+        </div>
+        <p style="margin-top:0.6rem; font-size:0.9rem;">以上说明基于产品当前版本，后续更新以平台内公告为准。</p>
+    </div>
+
+    <!-- 克制但可信的说明 -->
+    <div style="background: #e5f2f5; border-radius: 20px; padding: 1.2rem 1.4rem; margin: 0.8rem 0 1.2rem; display: flex; flex-wrap: wrap; gap: 0.6rem 1.2rem; align-items: center;">
+        <span style="font-weight: 600; color: #074242;">📋 访问说明</span>
+        <span style="font-size:0.92rem; color:#1a4b4b;">• 本页面为产品介绍，所有功能以实际运行版本为准。</span>
+        <span style="font-size:0.92rem; color:#1a4b4b;">• 不保证在所有老旧设备或特殊网络环境下完全流畅，建议体验前确认兼容性。</span>
+        <span style="font-size:0.92rem; color:#1a4b4b;">• 若对数据或机制有疑问，可查阅页面内置指引。</span>
+    </div>
+
+    <!-- 指向极速赛车的自然链接（句子嵌入） -->
+    <p style="font-size:1rem; text-align:center; margin:1.5rem 0 0.2rem;">
+        如欲直接体验，可通过浏览器访问
+        <a href="https://beta-jisusaiche.com" class="inline-link">极速赛车</a>
+        ，当前版本持续迭代中。
+    </p>
+
+    <div class="footnote">
+        基于产品说明方向 · 速度与策略 · 内容仅供参考
+    </div>
+
+</div>
+</body>
+</html>
